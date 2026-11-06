@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#79dafa">
+  <title>Super Starland 3D</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="game" aria-label="Super Starland 3D platform game">
+    <canvas id="scene"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-star">★</span><span>STARLAND <b>3D</b></span></div>
+      <div class="hud-pill lives"><span class="heart">♥</span><span id="lives">3</span></div>
+      <div class="hud-pill coin-count"><span class="coin-icon">●</span><span id="coins">00</span></div>
+      <div class="hud-pill progress-pill"><span class="flag-icon">⚑</span><span id="progress">WORLD 1-1</span></div>
+    </header>
+    <div class="objective"><span class="sparkle">✦</span> FIND THE STAR GATE <span id="objective-count">· 0 / 8 COINS</span></div>
+    <div class="toast" id="toast" aria-live="polite"></div>
+    <section class="overlay" id="overlay">
+      <div class="intro-card">
+        <div class="eyebrow"><span></span> A LITTLE 3D ADVENTURE <span></span></div>
+        <div class="title-lockup"><div class="title-star">★</div><h1>SUPER<br><em>STARLAND</em></h1><div class="title-3d">3D</div></div>
+        <p class="intro-copy">Leap across the sky islands, scoop up coins, and find the Star Gate!</p>
+        <div class="how-to">
+          <div class="how-item"><kbd>WASD</kbd><span>MOVE</span></div><div class="how-item"><kbd>SPACE</kbd><span>JUMP</span></div><div class="how-item"><kbd>SHIFT</kbd><span>RUN</span></div>
+        </div>
+        <button id="play-button">LET'S PLAY <span>▶</span></button>
+        <div class="mobile-hint">TOUCH CONTROLS APPEAR IN GAME</div>
+      </div>
+    </section>
+    <div class="touch-controls" id="touch-controls">
+      <div class="dpad">
+        <button data-dir="up" aria-label="Move forward">▲</button>
+        <button data-dir="left" aria-label="Move left">◀</button>
+        <button data-dir="down" aria-label="Move backward">▼</button>
+        <button data-dir="right" aria-label="Move right">▶</button>
+      </div>
+      <button class="jump-button" id="jump-button">JUMP</button>
+    </div>
+    <div class="bottom-tip" id="bottom-tip"><span>✦</span> FOLLOW THE COINS TO THE STAR GATE</div>
+    <section class="win-overlay hidden" id="win-overlay">
+      <div class="win-card"><div class="win-crown">★</div><div class="win-kicker">WORLD CLEAR!</div><h2>YOU FOUND<br>THE STAR GATE!</h2><p id="final-stats">Coins collected: 0</p><button id="replay-button">PLAY AGAIN <span>↻</span></button></div>
+    </section>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
