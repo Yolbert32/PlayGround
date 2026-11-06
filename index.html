@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#8edcff" />
+  <title>Cloudtop Kingdom — 3D Platform Adventure</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Cloudtop Kingdom home"><span class="brand-mark">✦</span><span>CLOUDTOP<span class="brand-light"> KINGDOM</span></span></a>
+      <div class="level-tag"><span class="live-dot"></span> WORLD 1-1 <span class="tag-divider">/</span> SUNNY SIDE UP</div>
+      <button class="sound-button" id="soundButton" aria-label="Toggle sound">♫ <span>SOUND ON</span></button>
+    </header>
+
+    <section class="game-frame" aria-label="Cloudtop Kingdom game">
+      <canvas id="game" aria-label="A colorful 3D platform game"></canvas>
+      <div class="hud">
+        <div class="hud-card lives"><div class="hud-icon heart">♥</div><div><small>LIVES</small><strong id="lives">03</strong></div></div>
+        <div class="hud-card coins"><div class="coin-icon"><span></span></div><div><small>COINS</small><strong id="coins">00</strong></div></div>
+        <div class="level-progress"><div class="progress-copy"><span>COURSE PROGRESS</span><strong id="progressText">0%</strong></div><div class="progress-track"><i id="progressBar"></i></div></div>
+        <div class="hud-card timer"><div class="timer-icon">◷</div><div><small>TIME</small><strong id="timer">300</strong></div></div>
+      </div>
+      <div class="toast" id="toast">✦ CHECKPOINT REACHED!</div>
+      <div class="overlay" id="overlay">
+        <div class="overlay-card intro-card" id="introCard">
+          <div class="eyebrow"><span>★</span> A LITTLE ADVENTURE AWAITS</div>
+          <h1>Cloudtop<br><em>Kingdom</em></h1>
+          <p>Hop across the sunny isles, scoop up the coins, and make it to the flag!</p>
+          <button class="play-button" id="playButton">LET’S PLAY <span>→</span></button>
+          <div class="control-hint"><span>← →</span> MOVE <i></i><span>SPACE</span> JUMP</div>
+        </div>
+        <div class="overlay-card result-card hidden" id="resultCard">
+          <div class="eyebrow" id="resultEyebrow">COURSE CLEAR!</div>
+          <h2 id="resultTitle">You did it!</h2><p id="resultMessage">The kingdom is cheering for you.</p>
+          <button class="play-button" id="againButton">PLAY AGAIN <span>↻</span></button>
+        </div>
+      </div>
+      <div class="mobile-controls" aria-label="Touch controls">
+        <div class="direction-pad"><button data-control="left" aria-label="Move left">‹</button><button data-control="right" aria-label="Move right">›</button></div>
+        <button class="jump-control" data-control="jump" aria-label="Jump">JUMP <span>↑</span></button>
+      </div>
+      <div class="game-caption"><span><b>TIP</b> Jump on critters to bounce higher!</span><span class="caption-right">A BRIGHT LITTLE WORLD <span>✦</span></span></div>
+    </section>
+    <footer class="footer"><span>MADE FOR SUNNY-DAY EXPLORERS</span><span class="footer-center">✦ &nbsp; FIND YOUR WAY HOME &nbsp; ✦</span><span>ARROWS / A D &nbsp; · &nbsp; SPACE TO JUMP</span></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
