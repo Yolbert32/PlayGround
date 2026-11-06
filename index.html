@@ -11,11 +11,11 @@
 </head>
 <body>
 <div id="game"></div>
-<div class="topbar"><div class="brand"><strong>🍄 MARIO 3D WORLD</strong><small>MUSHROOM MEADOW · 1-1</small></div><div class="stats"><div class="stat starstat"><b>⭐ <span id="stars">0/5</span></b><span>ESTRELLAS</span></div><div class="stat coin"><b>🟡 <span id="coins">00</span></b><span>COINS</span></div><div class="stat"><b id="time">180</b><span>TIME</span></div><div class="stat life"><b>♥ <span id="lives">3</span></b><span>LIVES</span></div></div></div>
+<div class="topbar"><div class="brand"><strong>🍄 MARIO 3D WORLD</strong><small>MUSHROOM MEADOW · 1-1</small></div><div class="stats"><div class="stat starstat"><b>⭐ <span id="stars">0/3</span></b><span>ESTRELLAS</span></div><div class="stat coin"><b>🟡 <span id="coins">00</span></b><span>COINS</span></div><div class="stat"><b id="time">180</b><span>TIME</span></div><div class="stat life"><b>♥ <span id="lives">3</span></b><span>LIVES</span></div></div></div>
 <div class="hint"><kbd>WASD</kbd> move <kbd>SPACE</kbd> jump <kbd>SHIFT</kbd> sprint</div>
 <div class="touch" id="touch"><div class="stick" id="stick"><div class="nub" id="nub"></div></div><button class="jump" id="jump">JUMP</button></div>
 <div class="toast" id="toast">SUPER!</div>
-<div class="overlay" id="overlay"><div class="panel"><div class="emblem" id="emblem">🍄</div><div class="sub" id="sub">A sunny little adventure</div><h1 id="title">Mushroom Meadow</h1><p id="message">¡Salta y recorre la pradera para encontrar las 5 estrellas! Solo podrás superar el nivel cuando las tengas todas y llegues al castillo.</p><button class="btn" id="start">LET'S-A GO!</button></div></div>
+<div class="overlay" id="overlay"><div class="panel"><div class="emblem" id="emblem">🍄</div><div class="sub" id="sub">A sunny little adventure</div><h1 id="title">Mushroom Meadow</h1><p id="message">¡Salta y recorre la pradera para encontrar las 3 estrellas! Solo podrás superar el nivel cuando las tengas todas y llegues al castillo.</p><button class="btn" id="start">LET'S-A GO!</button></div></div>
 <script type="module">
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
 
@@ -54,9 +54,9 @@ function castle(){cube(scene,mat(0xf6d894),0,3.45,-46,7,5.6,5);cube(scene,mat(0x
 const pole=cube(scene,white,4.8,3.1,-40, .16,6.2,.16);const flag=cube(scene,mat(0xf34943),5.45,5.35,-40,1.2,.76,.14);ball(scene,gold,4.8,6.35,-40,.35);return flag}const goalFlag=castle();
 function coinAt(x,y,z){const g=new THREE.Group();const c=new THREE.Mesh(new THREE.CylinderGeometry(.34,.34,.11,24),gold);c.rotation.x=Math.PI/2;c.castShadow=true;g.add(c);const ring=new THREE.Mesh(new THREE.TorusGeometry(.24,.045,8,18),mat(0xffe77b,.35));ring.position.z=.07;g.add(ring);g.position.set(x,y,z);scene.add(g);coins.push({obj:g,got:false,baseY:y})}
 const coins=[];[[0,1.25,1],[1.3,1.65,-4],[0,2.3,-9],[0,2.65,-12],[.8,2.45,-17],[0,3.35,-21],[2,3.95,-27],[3,3.9,-31],[0,3.6,-36],[-1.4,3.6,-39]].forEach(p=>coinAt(...p));
-const requiredStars=5,stars=[];
+const requiredStars=3,stars=[];
 function starAt(x,y,z){const shape=new THREE.Shape();for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,r=i%2===0?.68:.31,px=Math.cos(a)*r,py=Math.sin(a)*r;if(i===0)shape.moveTo(px,py);else shape.lineTo(px,py)}shape.closePath();const geo=new THREE.ExtrudeGeometry(shape,{depth:.16,bevelEnabled:true,bevelSegments:2,steps:1,bevelSize:.055,bevelThickness:.045});const g=new THREE.Group(),face=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color:0xffd52e,emissive:0x9c5e00,emissiveIntensity:.3,metalness:.12,roughness:.28}));face.castShadow=true;g.add(face);for(const ex of [-.18,.18]){const eye=new THREE.Mesh(new THREE.SphereGeometry(.055,10,8),dark);eye.position.set(ex,.04,.235);g.add(eye)}const aura=new THREE.Mesh(new THREE.TorusGeometry(.86,.035,8,28),new THREE.MeshBasicMaterial({color:0xfff078,transparent:true,opacity:.72}));g.add(aura);g.position.set(x,y,z);scene.add(g);stars.push({obj:g,got:false,baseY:y})}
-[[0,1.65,2],[0,2.1,-8],[0,2.85,-19],[2,3.25,-29],[0,3.25,-40]].forEach(p=>starAt(...p));
+[[0,1.65,2],[0,2.1,-8],[0,2.85,-19]].forEach(p=>starAt(...p));
 // A few slow, squashable Goombas patrol platform tops.
 function goomba(x,z,y){const g=new THREE.Group();ball(g,mat(0x9c5636),0,.55,0,.52,.52,.5);ball(g,mat(0xbd7042),0,.35,.04,.62,.28,.53);for(let dx of [-.2,.2]){ball(g,white,dx,.62,.43,.14,.18,.08);ball(g,dark,dx,.61,.5,.065,.09,.04)}for(let dx of [-.35,.35])cube(g,dark,dx,.06,.02,.22,.12,.32);g.position.set(x,y,z);scene.add(g);enemies.push({obj:g,x,z,y,phase:Math.random()*6,dead:false})}
 const enemies=[];goomba(-1.6,-10,.45);goomba(1.2,-22,1.15);goomba(2.5,-37,1.55);
