@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#101a2d" />
+  <title>Frogger: Ghost Traffic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Ghost Traffic home"><span class="brand-mark">✳</span><span>AFTERIMAGE<span class="brand-dot">.</span></span></a>
+      <div class="top-note"><span class="live-dot"></span> YOUR PAST IS IN THE FAST LANE</div>
+      <button class="sound-button" id="soundButton" aria-label="Toggle sound" title="Toggle sound">♫ <span>SOUND</span></button>
+    </header>
+
+    <section class="game-layout" aria-label="Ghost Traffic game">
+      <aside class="intro-panel">
+        <p class="eyebrow">A TIME-LOOP ARCADE GAME <span>№ 01</span></p>
+        <h1>THE ROAD<br>REMEMBERS<span class="title-star">✳</span></h1>
+        <p class="intro-copy">Every car is driven by a version of <em>you</em>. Dodge the instincts you left behind.</p>
+        <div class="stat-row">
+          <div class="stat"><span class="stat-label">BEST CROSSINGS</span><strong id="bestScore">00</strong></div>
+          <div class="stat"><span class="stat-label">GHOST DRIVERS</span><strong id="driverCount">00</strong></div>
+        </div>
+        <div class="memory-card">
+          <div class="memory-icon">↺</div>
+          <div><strong>YOUR RUNS, REPLAYED</strong><p>Each run leaves a driver behind. Their old moves steer the traffic in your next run.</p></div>
+        </div>
+        <div class="controls-hint"><span class="keycap">↑</span><span class="keycap">←</span><span class="keycap">↓</span><span class="keycap">→</span><span class="control-label">MOVE / SWIPE</span></div>
+      </aside>
+
+      <section class="arcade" aria-label="Game board">
+        <div class="arcade-topline"><span><i class="tiny-signal"></i> MEMORY LANE</span><span id="runLabel">RUN 001</span></div>
+        <div class="canvas-wrap">
+          <canvas id="game" aria-label="Frogger game. Use arrow keys or WASD to move." tabindex="0"></canvas>
+          <div class="overlay" id="overlay">
+            <div class="overlay-card">
+              <div class="overlay-spark">✳</div>
+              <p class="eyebrow" id="overlayEyebrow">THE FIRST RUN IS YOURS</p>
+              <h2 id="overlayTitle">MAKE<br>YOUR ESCAPE.</h2>
+              <p id="overlayText">Reach a glowing garden. When your run ends, your old moves take the wheel.</p>
+              <button class="play-button" id="playButton"><span>START RUN</span><b>↗</b></button>
+              <span class="overlay-foot">ARROWS / WASD <i>·</i> SWIPE TO MOVE</span>
+            </div>
+          </div>
+          <div class="toast" id="toast" aria-live="polite"></div>
+        </div>
+        <div class="arcade-footer"><span><b>01</b> CROSS THE ROAD</span><span><b>02</b> REACH THE GARDEN</span><span><b>03</b> OUTRUN YOURSELF</span></div>
+      </section>
+
+      <aside class="score-panel">
+        <div class="score-box"><span class="panel-label">CROSSINGS</span><strong id="score">00</strong><div class="score-rule"></div><span class="sub-label">GARDEN VISITS</span></div>
+        <div class="lives-box"><div class="section-heading"><span>CHANCES</span><span id="lifeCount">03 / 03</span></div><div class="lives" id="lives" aria-label="3 chances remaining"><i>✿</i><i>✿</i><i>✿</i></div></div>
+        <div class="driver-box"><div class="section-heading"><span>DRIVER LOG</span><span class="rec-indicator">● REC</span></div><div id="driverLog" class="driver-log"><div class="empty-log">YOUR FIRST RUN<br>IS WAITING TO HAPPEN.</div></div></div>
+        <button id="restartButton" class="restart-button" disabled><span>↻</span> NEW RUN</button>
+      </aside>
+    </section>
+    <footer class="page-footer"><span>AN EXPERIMENT IN REPETITION</span><span>YOU CAN'T OUTDRIVE YOURSELF <b>✳</b></span></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
